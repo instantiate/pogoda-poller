@@ -1,0 +1,8 @@
+/resources/cache/*
+/resources/log/*
+/resources/config/local/local.php
+/vendor
+
+.idea/
+.DS_Store
+composer.phar

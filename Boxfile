@@ -1,0 +1,62 @@
+global:
+  env:
+    - SILEX_ENV: pagoda
+
+db1:
+  name: db1
+
+web1:
+  name: web1
+  php_default_locale: "en_GB"
+  php_date_timezone: "Europe/London"
+
+  shared_writable_dirs:
+    - resources/cache
+    - resources/log
+
+  document_root: web
+
+  php_extensions:
+    - pdo_mysql
+    - curl
+    - zip
+    - apc
+
+  after_build:
+    - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install -o --prefer-dist"
+
+worker1:
+  name: poller
+  php_default_locale: "en_GB"
+  php_date_timezone: "Europe/London"
+
+  shared_writable_dirs:
+    - resources/cache
+    - resources/log
+
+  php_extensions:
+    - pdo_mysql
+    - curl
+    - zip
+    - apc
+
+  after_build:
+    - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install -o --prefer-dist"
+
+worker2:
+  name: threshold_checker
+  php_default_locale: "en_GB"
+  php_date_timezone: "Europe/London"
+
+  shared_writable_dirs:
+    - resources/cache
+    - resources/log
+
+  php_extensions:
+    - pdo_mysql
+    - curl
+    - zip
+    - apc
+
+  after_build:
+    - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install -o --prefer-dist"

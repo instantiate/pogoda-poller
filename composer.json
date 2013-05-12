@@ -1,0 +1,17 @@
+{
+    "require": {
+        "php": ">=5.3.7",
+        "silex/silex": "~1",
+        "twig/twig": "~1",
+        "monolog/monolog": "~1.0",
+        "symfony/twig-bridge": "~2.2",
+        "symfony/console": "~2.2",
+        "doctrine/dbal": "2.3.3",
+        "raulfraile/ladybug": "0.6",
+        "fabpot/goutte": "~1.0",
+        "swiftmailer/swiftmailer": "~4.1"
+    },
+    "autoload": {
+        "psr-0": { "": "src/" }
+    }
+}

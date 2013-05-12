@@ -1,0 +1,23 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__.'/vendor/autoload.php';
+
+use Symfony\Component\Console\Input\ArgvInput;
+use Silex\Application;
+use Ladybug\Loader as Ladybug;
+
+Ladybug::loadHelpers();
+$app = new Application();
+
+$input = new ArgvInput();
+$env = $input->getParameterOption(array('--env', '-e'), getenv('SILEX_ENV') ?: 'prod');
+require __DIR__ . '/resources/config/' . $env . '.php';
+if (file_exists(__DIR__.'/resources/config/local/local.php')) {
+  require __DIR__.'/resources/config/local/local.php';
+}
+
+require __DIR__.'/src/app.php';
+
+$console = require __DIR__.'/src/console.php';
+$console->run($input);
