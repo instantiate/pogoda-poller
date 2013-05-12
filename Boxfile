@@ -30,6 +30,8 @@ worker1:
   php_default_locale: "en_GB"
   php_date_timezone: "Europe/London"
 
+  exec: "php console pagoda:poll"
+
   shared_writable_dirs:
     - resources/cache
     - resources/log
@@ -47,6 +49,8 @@ worker2:
   name: threshold_checker
   php_default_locale: "en_GB"
   php_date_timezone: "Europe/London"
+
+  exec: "php console threshold:check"
 
   shared_writable_dirs:
     - resources/cache
